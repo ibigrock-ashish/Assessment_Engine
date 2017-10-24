@@ -7,16 +7,13 @@ node {
 
   stage 'Checkout Repository'
   git url: 'https://github.com/stackroute-immersive-wave/Assessment_Engine.git', branch: "${env.master}"
+   
+   
+  git clone git@github.com:stackroute-immersive-wave/Assessment_Engine.git
 
-  stage 'Installing Dependencies'
-  sh "npm prune"
-  sh "npm install"
 
   stage 'Testing'
-  sh "npm test"
+  sh "mvn test"
 
-  stage 'Build'
-  sh "mkdir dist -p"
-  sh "cp package.json dist && cd dist && tar cvzf my-ci-project_current.tar.gz *"
-  step([$class: 'ArtifactArchiver', artifacts: 'dist/*.tar.gz', fingerprint: true])
+
 }
