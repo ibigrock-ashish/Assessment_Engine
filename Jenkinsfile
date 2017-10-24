@@ -7,8 +7,6 @@ node {
 
   stage 'Checkout Repository'
   git url: 'https://github.com/stackroute-immersive-wave/Assessment_Engine.git', branch: "${env.master}"
-   
-   
   git clone git@github.com:stackroute-immersive-wave/Assessment_Engine.git
 
 
