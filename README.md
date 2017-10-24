@@ -81,4 +81,4 @@ cd AuthenticationService
 mvn clean compile install spring-boot:run
 
 Open browser and point to: http://localhost:8080/
-or you can use 9090.
+
