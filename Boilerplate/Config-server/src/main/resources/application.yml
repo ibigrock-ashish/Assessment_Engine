@@ -1,0 +1,27 @@
+# Port at which the the server will run
+message: This is from config
+
+server:
+  port: 8888
+# Setting the path where the properties are stored for each service/app
+spring:
+  application:
+    name: config-service  
+  cloud:
+    config:
+      server:
+        native:
+           search-locations : classpath:/shared    
+# Not using Git, so it is native   
+  profiles:
+    active : native 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+  instance:
+    hostname: localhost
+    
+
+
+  
