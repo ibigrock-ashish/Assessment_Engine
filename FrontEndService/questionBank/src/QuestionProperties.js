@@ -12,15 +12,19 @@ const styles = {
     width: 150
   },
   cardWidth :{
-    margin: "left",
-width: 688,
-border: "3px solid yellow",
-padding: 5
-  },
+    margin: "auto",
+    marginTop:100,
+    width: 700,
+    height: 300,
+    border: "3px solid yellow",
+    padding: 5
+    },
   buttonAlign:{
     justifyContent: 'center',
-     alignItems: 'center',
-  },
+    alignItems: 'center',
+    padding: 1
+
+    },
 };
 class QuestionProperties extends React.Component {
 constructor(props){
@@ -75,10 +79,12 @@ constructor(props){
           <MenuItem value={3} primaryText="3" />
         </DropDownMenu>
       <div>
+        <br/>
         <RaisedButton
           label = "Create"
           onClick = {this.openLayout}
           style = {styles.buttonAlign}
+          primary={true}
         />
           < QuestionLayout openMcq={this.state.mcq} openTf={this.state.tf} setDefault = {this.closeLayout}  />
         </div>
