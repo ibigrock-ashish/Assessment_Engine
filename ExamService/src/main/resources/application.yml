@@ -3,7 +3,8 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     serviceUrl:
-      defaultZone: http://172.23.238.187:8070/eureka/
+      defaultZone: http://172.23.238.205:8071/eureka/ 
   instance:
     hostname: localhost
-    appname: "Exam Creation service"
+    appname: "Exam Creation"
+    

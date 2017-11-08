@@ -5,24 +5,39 @@ import org.springframework.data.annotation.Id;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.netflix.discovery.provider.Serializer;
+
+
 @Document(collection="examcreatedb")
-public class Exam 
+public class Exam
 {
+@Override
+	public String toString() {
+		return "Exam [subject=" + subject + ", topic=" + topic + ", level=" + level + ", complexity="
+				+ complexity + ", questionType=" + questionType  + "]";
+	}
+public Exam() {
+	
+}
+public Exam( String subject, String topic, String level, String complexity, String questionType) {
+		super();
+		
+		this.subject = subject;
+		this.topic = topic;
+		this.level = level;
+		this.complexity = complexity;
+		this.questionType =questionType;
+		
+	}
 @Id
-	private int id;
+	
 	private String subject;
 	private String topic;
 	private String level;
 	private String complexity;
-	private String mcq;
-	private String peragraph;
-	private String trueorFalse;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	private String questionType;
+	;
+
 	public String getSubject() {
 		return subject;
 	}
@@ -48,23 +63,10 @@ public class Exam
 		this.complexity = complexity;
 	}
 	public String getMcq() {
-		return mcq;
+		return questionType;
 	}
 	public void setMcq(String mcq) {
-		this.mcq = mcq;
+		this.questionType = mcq;
 	}
-	public String getPeragraph() {
-		return peragraph;
-	}
-	public void setPeragraph(String peragraph) {
-		this.peragraph = peragraph;
-	}
-	public String getTrueorFalse() {
-		return trueorFalse;
-	}
-	public void setTrueorFalse(String trueorFalse) {
-		this.trueorFalse = trueorFalse;
-	}
-	
 	
 }

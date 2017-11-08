@@ -1,5 +1,7 @@
 package com.stackroute.assessmentengine.examcreation.message;
 
+import javax.ws.rs.Consumes;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
+import com.stackroute.assessmentengine.examcreation.domian.Exam;
 import com.stackroute.assessmentengine.examcreation.domian.Model;
 import com.stackroute.assessmentengine.examcreation.repository.ExamCreationRepository;
 
@@ -30,10 +33,11 @@ public class KafkaConsumer {
     String kafkaTopic;
     
     @KafkaListener(topics="${topic2}")
-   public void processMessage(String content) {
-        log.info("received content = '{}'", content + ", For Topic : " + kafkaTopic);
-        model.setValue(content);
-        //System.out.println(content);
+    @Consumes("application/json")
+   public void processMessage(Exam exam) {
+        log.info("received content = '{}'", exam + ", For Topic : " + kafkaTopic);
+       System.out.println(exam.toString());
+       //System.out.println(content);
        
     }
 }

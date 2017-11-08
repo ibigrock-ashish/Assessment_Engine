@@ -7,13 +7,11 @@ import org.springframework.stereotype.Repository;
 import com.stackroute.assessmentengine.examcreation.domian.Exam;
 
 @Repository
-public interface ExamCreationRepository extends MongoRepository<Exam, Integer > 
+public interface ExamCreationRepository extends MongoRepository<Exam, String > 
 {
 
 	
 	 @Query("{subject:'?0'}")
 	    Exam findCustomBySubject(String subject );
-
-	
 			 
 }
