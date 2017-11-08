@@ -1,14 +1,28 @@
 package com.stackroute.assessmentengine.questionbank.service;
 
-import java.util.List;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
+import com.stackroute.assessmentengine.questionbank.config.SpringMongoConfig;
 import com.stackroute.assessmentengine.questionbank.domain.QuestionBank;
 import com.stackroute.assessmentengine.questionbank.repository.QuestionBankMongoRepository;
+
 @Service
 public class QuestionBankServiceImpl implements QuestionBankService {
+	
+	ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringMongoConfig.class);
+	MongoOperations mongoOperation = (MongoOperations) ctx.getBean("mongoTemplate");
+
+	@Autowired
+	MongoTemplate mongoTemplate;
 	
 	@Autowired
 	QuestionBankMongoRepository mongoRepository;
@@ -43,11 +57,22 @@ public class QuestionBankServiceImpl implements QuestionBankService {
 	}
 
 	@Override
-	public QuestionBank getSpecificsub(String subject) {
+	public List getSpecificquestions(String subject,String topic,String level,String complexity,String questionType) {
+		
+		Query query11 = new Query();
+		query11.addCriteria(Criteria.where("subjectLists.subject").in(subject)
+				.andOperator(Criteria.where("subjectLists.topicList.topic").in(topic)
+				.andOperator(Criteria.where("subjectLists.topicList.levelList.level").in(level)
+				.andOperator(Criteria.where("subjectLists.topicList.levelList.complexityList.complexity").in(complexity)
+				.andOperator(Criteria.where("subjectLists.topicList.levelList.complexityList.questionTypeList.questionType").in(questionType))))));
 	
-		return mongoRepository.getSpecicsub(subject);
+		List<QuestionBank> userTest11 = mongoOperation.find(query11, QuestionBank.class);
+		System.out.println("query11 - " + query11.toString());
+		for (QuestionBank questionBank : userTest11) {
+			System.out.println("userTest11 - " + questionBank);
+		}
+		
+		return userTest11;
 	}
-	
-	
 
 }

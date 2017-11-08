@@ -1,5 +1,7 @@
 package com.stackroute.assessmentengine.questionbank.message;
  
+import java.util.concurrent.CountDownLatch;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,35 +10,28 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import com.stackroute.assessmentengine.questionbank.domain.Model;
+import com.stackroute.assessmentengine.questionbank.domain.QuestionBank;
+import com.stackroute.assessmentengine.questionbank.domain.SubjectList;
 
 
-
-
-
-
-
-
-@Service
 public class KafkaConsumer {
-    private static final Logger log = LoggerFactory.getLogger(KafkaConsumer.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(KafkaConsumer.class);
 
-    
-    Model model;
-    
-    @Autowired
-    public void setModel(Model model) {
-        this.model = model;
-    }
+	 private CountDownLatch latch = new CountDownLatch(1);
 
-    @Value("${topic}")
-    String kafkaTopic;
-    
-    @KafkaListener(topics="${topic}")
-    
-   public void processMessage(String content) {
-        log.info("received content = '{}'", content + " For Topic : " + kafkaTopic);
-        model.setValue(content);
-        //System.out.println(content);
-   }
+	 public CountDownLatch getLatch() {
+	   return latch;
+	 }
+
+	 @KafkaListener(topics = "${kafka.topic.json}")
+	 public void receive(QuestionBank questionBank) {
+	      for(SubjectList c:questionBank.getSubjectLists())
+	      {
+	          LOGGER.info("received car='{}'", c.toString());
+	            System.out.println("+++++++++++++++++++"+c.toString());
+	            latch.countDown(); 
+	      }
+	 
+	 }
 }
 

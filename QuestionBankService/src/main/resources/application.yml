@@ -8,4 +8,7 @@ eureka:
     hostname: localhost
     
     
-    
+kafka:
+ bootstrap-servers: 172.23.238.133:9092
+ topic:
+   json: raju

@@ -2,9 +2,10 @@ package com.stackroute.assessmentengine.questionbank.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.mongodb.AggregationOutput;
+import com.mongodb.DBCollection;
 import com.stackroute.assessmentengine.questionbank.domain.QuestionBank;
 
 public interface QuestionBankService {
@@ -14,9 +15,7 @@ public interface QuestionBankService {
 	public QuestionBank updatequestion(String id,QuestionBank questionBank);
 	public String deletequestion(String id);
 	
-	public QuestionBank getSpecificsub(String subject);
-	
-	
+	public List getSpecificquestions(String subject,String topic,String level,String complexity,String questionType);
 	
 
 }

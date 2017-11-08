@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.mongodb.AggregationOutput;
+import com.mongodb.DBCollection;
 import com.stackroute.assessmentengine.questionbank.domain.QuestionBank;
 import com.stackroute.assessmentengine.questionbank.service.QuestionBankService;
 
@@ -22,7 +24,7 @@ public class QuestionBankController {
 	}
 	@RequestMapping("/questions/{id}")
 	public ResponseEntity<QuestionBank> getQuestion(@PathVariable String id) {
-		;
+		
 		return ResponseEntity.ok(questionBankService.getquestion(id));
 		
 	}
@@ -39,18 +41,20 @@ public class QuestionBankController {
 		questionBankService.updatequestion(id,question);
 		return ResponseEntity.ok("Question Updated successfully");
 	}
-	@RequestMapping(method=RequestMethod.DELETE,value="/places/{id}")
+	@RequestMapping(method=RequestMethod.DELETE,value="/questions/{id}")
 	public ResponseEntity<String> deleteQuestion(@PathVariable String id) {
 		
 		questionBankService.deletequestion(id);
 		 
 		 return ResponseEntity.ok("Question Deleted successfully");
 	}
-	@RequestMapping(method=RequestMethod.GET,value="/getsub/{subject}")
-	public ResponseEntity<QuestionBank> getSpecificsub(@PathVariable String subject){
+	
+	@RequestMapping(method=RequestMethod.GET,value="/specquestions/{subject}/{topic}/{level}/{complexity}/{questionType}")
+	public ResponseEntity<List<QuestionBank>> getSpecificQuestions(@PathVariable String subject,@PathVariable String topic,@PathVariable String level,@PathVariable String complexity,@PathVariable String questionType) {
 		
-		return ResponseEntity.ok(questionBankService.getSpecificsub(subject));
+		return ResponseEntity.ok( questionBankService.getSpecificquestions(subject,topic,level,complexity,questionType));
 		
 	}
+	
 
 }
