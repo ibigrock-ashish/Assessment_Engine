@@ -3,6 +3,7 @@ package com.stackroute.assessmentengine.engineService.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,16 +24,18 @@ public class Enginecontroller {
 	String questionarr[]= {"Question1","Question2"};
 	String answer[]= {"Answer1","Answer2"};
 
+	@CrossOrigin(origins = "http://localhost:3000")
     @MessageMapping("/questions")
     @SendTo("/topic/question")
     public Display greeting(Question question) throws Exception {
         Thread.sleep(1000); // simulated delay
-        String options[]= {"option1","option2","option3"};
-		Question q=new Question(1,"question3","Answer3",options);
-		producer.send(q);
-		
+//        String options[]= {"option1","option2","option3"};
+//		Question q=new Question(1,"question3","Answer3",options);
+//		producer.send(q);
+		System.out.println("recieved");
         if(question.getQuestion().equals("Question1"))
         {
+        	System.out.println("q1");
         	
         	Question questions=new Question();
         	questions.setQuestion(questionarr[1]);
@@ -42,6 +45,7 @@ public class Enginecontroller {
     }
         if(question.getQuestion().equals("Question2"))
         {
+        	System.out.println("q2");
         	Question questions=new Question();
         	questions.setQuestion(questionarr[0]);
         	questions.setAnswer(answer[0]);
@@ -50,6 +54,7 @@ public class Enginecontroller {
       
         }
         else {
+        	System.out.println("else block");
         	return new Display("Successfully Exam Completed");
         }
      }
