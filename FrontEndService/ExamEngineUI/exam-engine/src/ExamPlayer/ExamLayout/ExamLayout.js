@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import QuestionCrumps from './QuestionCrumps/QuestionCrumps';
-import QuestionButtons from './QuestionButtons/QuestionButtons';
 import ExamRenderer from './ExamRenderer/ExamRenderer';
 
 const divStyle={
@@ -16,10 +14,6 @@ class ExamLayout extends Component{
 		return(
 			<div style={divStyle}>
 			<ExamRenderer />
-			<div>
-			<QuestionCrumps style={{height:'100', width:'250'}} />
-			<QuestionButtons />
-			</div>
 			</div>
 		);
 	}
