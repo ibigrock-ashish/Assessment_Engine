@@ -1,15 +1,9 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
-import Visibility from 'material-ui/svg-icons/action/visibility';
-import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import VisibilityOff from 'material-ui/svg-icons/action/visibility-off';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
-import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
-import TFQuestion from './TFQuestion';
   const styles = {
     block: {
 
@@ -27,7 +21,7 @@ class PreviewTrueFalse extends React.Component{
                 open: true,
                 question:"",
                 checkedTrue: false,
-                checkedFalse: false
+                checkedFalse: false 
                 }
     this.toggleDrawer = this.toggleDrawer.bind(this);
   }

@@ -4,8 +4,7 @@ import AppBar from 'material-ui/AppBar';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import QuestionLayout from './QuestionLayout';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import {Card, CardHeader} from 'material-ui/Card';
 
 const styles = {
   customWidth: {
@@ -16,7 +15,7 @@ const styles = {
     marginTop:100,
     width: 700,
     height: 300,
-    border: "3px solid yellow",
+    
     padding: 5
     },
   buttonAlign:{

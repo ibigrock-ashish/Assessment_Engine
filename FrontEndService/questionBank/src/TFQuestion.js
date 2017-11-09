@@ -8,26 +8,31 @@ class TFQuestion extends React.Component{
           question: '',
           answer: '',
       };
+      this.sendQuestion = this.sendQuestion.bind(this);
   }
+
   render(){
   return(<div>
       <TextField
         hintText="Enter the Question"
         errorText=""
-        onChange={(e) =>this.handleChange(e.target.value)}
+        onChange={(e) => {this.handleChange(e.target.value)
+                          this.sendQuestion(e.target.value)}
+        }
       /><br />
-  <TextField
-    hintText="True or False"
-    errorText=""
-    floatingLabelText=""
-    multiLine={true}
-    rows={1}
-    onChange={(e) =>this.handleAnswer(e.target.value)}
-  /><br />
-  </div>
-
-);
-}
+      {this.state.test}
+      <br / >
+      <TextField
+        hintText="True or False"
+        errorText=""
+        floatingLabelText=""
+        multiLine={true}
+        rows={1}
+        onChange={(e) =>this.handleAnswer(e.target.value)}
+      /><br />
+      </div>
+  );
+  }
 handleChange(value) {
       this.setState({
           question: value
@@ -38,5 +43,9 @@ handleAnswer(value){
           answer: value
   })
 }
+sendQuestion(value){
+
+  this.props.onSubmit(value)
+  }
 }
 export default TFQuestion;

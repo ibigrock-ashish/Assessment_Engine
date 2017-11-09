@@ -9,16 +9,16 @@ const style = {
   margin: 12,
 };
 export default class QuestionLayout extends React.Component {
-
   constructor(props) {
     super(props);
-
     this.state = {mcq: false,
                   tf: false,
                   preview: false,
-                  status: false}
+                  status: false,
+                  question: 'default'}
     this.openPreview = this.openPreview.bind(this);
     this.closePreview =  this.closePreview.bind(this);
+    this.getQuestion = this.getQuestion.bind(this);
   }
   render() {
     return (
@@ -32,17 +32,15 @@ export default class QuestionLayout extends React.Component {
         </Drawer>
         <Drawer width={1439} openSecondary={true} open={this.state.tf} >
           <AppBar title="True or False Question" />
-          < TFQuestion />
+          < TFQuestion onSubmit = {this.getQuestion}/>
             <RaisedButton label="cancel" default={true} style={style} onClick = {this.props.setDefault }/>
             <RaisedButton label="preview" secondary={true} style={style} onClick={this.openPreview}/>
             <RaisedButton label="save" primary={true} style={style} />
             <PreviewTrueFalse open = {this.state.preview} setDefault = {this.closePreview} />
         </Drawer>
-
       </div>
     );
   }
-
   componentWillReceiveProps(newProps){
     this.setState({mcq: newProps.openMcq});
     this.setState({tf: newProps.openTf});
@@ -52,5 +50,8 @@ export default class QuestionLayout extends React.Component {
   }
   closePreview(){
     this.setState({preview: false});
+  }
+  getQuestion(value){
+    this.setState({question: value});
   }
 }
