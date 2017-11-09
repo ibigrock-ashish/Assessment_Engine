@@ -36,7 +36,7 @@ export default class QuestionLayout extends React.Component {
             <RaisedButton label="cancel" default={true} style={style} onClick = {this.props.setDefault }/>
             <RaisedButton label="preview" secondary={true} style={style} onClick={this.openPreview}/>
             <RaisedButton label="save" primary={true} style={style} />
-            <PreviewTrueFalse open = {this.state.preview} setDefault = {this.closePreview} />
+            <PreviewTrueFalse open = {this.state.preview} setDefault = {this.closePreview} question = {this.state.question} />
         </Drawer>
       </div>
     );

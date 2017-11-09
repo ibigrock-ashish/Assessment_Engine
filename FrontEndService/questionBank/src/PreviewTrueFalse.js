@@ -11,17 +11,20 @@ import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
     },
     radioButton: {
       marginBottom: 16,
-      marginLeft: 10
+      marginLeft: 20
     },
+    questionStyle:{
+      marginLeft: 20
+    }
   };
 class PreviewTrueFalse extends React.Component{
   constructor(props){
     super(props)
     this.state={
                 open: true,
-                question:"",
+                question:'',
                 checkedTrue: false,
-                checkedFalse: false 
+                checkedFalse: false
                 }
     this.toggleDrawer = this.toggleDrawer.bind(this);
   }
@@ -34,9 +37,7 @@ class PreviewTrueFalse extends React.Component{
             iconClassNameRight="muidocs-icon-navigation-expand-more"
           />
     <Card initiallyExpanded="true">
-      <CardHeader
-        title = "Question Preview under construction"
-      />
+        <h3 style = {styles.questionStyle}> {this.state.question} </h3>
         <RadioButtonGroup name="Choices" defaultSelected="none">
         <RadioButton
           value="light"
@@ -64,6 +65,7 @@ toggleDrawer(){
 }
 componentWillReceiveProps(newProps){
   this.setState({open : newProps.open});
+  this.setState({question: newProps.question});
 }
 updateCheckTrue() {
     this.setState((oldState) => {

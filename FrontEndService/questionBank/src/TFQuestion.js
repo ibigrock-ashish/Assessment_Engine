@@ -20,7 +20,6 @@ class TFQuestion extends React.Component{
                           this.sendQuestion(e.target.value)}
         }
       /><br />
-      {this.state.test}
       <br / >
       <TextField
         hintText="True or False"
