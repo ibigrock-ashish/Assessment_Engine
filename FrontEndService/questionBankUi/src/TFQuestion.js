@@ -8,7 +8,7 @@ class TFQuestion extends React.Component{
           question: '',
           answer: '',
       };
-      this.sendQuestion = this.sendQuestion.bind(this);
+    
   }
 
   render(){
@@ -18,7 +18,7 @@ class TFQuestion extends React.Component{
         errorText=""
         onChange={(e) => {this.handleChange(e.target.value)
                           this.sendQuestion(e.target.value)}
-        }
+                  }
       /><br />
       <br / >
       <TextField
@@ -27,8 +27,10 @@ class TFQuestion extends React.Component{
         floatingLabelText=""
         multiLine={true}
         rows={1}
-        onChange={(e) =>this.handleAnswer(e.target.value)}
-      /><br />
+        onChange={(e) => {this.handleAnswer(e.target.value)
+                          this.sendAnswer(e.target.value)}
+                  }
+      /> <br />
       </div>
   );
   }
@@ -46,5 +48,8 @@ sendQuestion(value){
 
   this.props.onSubmit(value)
   }
+sendAnswer(value){
+  this.props.getAnswer(value)
+}
 }
 export default TFQuestion;

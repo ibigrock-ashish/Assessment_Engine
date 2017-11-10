@@ -15,7 +15,7 @@ const styles = {
     marginTop:100,
     width: 700,
     height: 300,
-    
+
     padding: 5
     },
   buttonAlign:{
@@ -29,7 +29,7 @@ class QuestionProperties extends React.Component {
 constructor(props){
   super(props);
   this.state= {
-                typeValue: 2,
+                typeValue: 1,
                 levelValue: 1,
                 domainValue: 1,
                 complexityValue: 1,
@@ -85,13 +85,20 @@ constructor(props){
           style = {styles.buttonAlign}
           primary={true}
         />
-          < QuestionLayout openMcq={this.state.mcq} openTf={this.state.tf} setDefault = {this.closeLayout}  />
+          < QuestionLayout openMcq={this.state.mcq} openTf={this.state.tf}
+                            type = {this.state.typeValue} level = {this.state.levelValue}
+                            domain = {this.state.domainValue} complexity = {this.state.complexityValue}
+                            topic = {this.state.topicValue}
+                            setDefault = {this.closeLayout}
+
+          />
+
         </div>
       </Card>
       </div>
     );
   }
-  handleDomainChange = (event, index, domainValue) => this.setState({domainValue});
+  handleDomainChange = (event, index, domainValue) => this  .setState({domainValue});
   handleTopicChange = (event, index, topicValue) => this.setState({topicValue});
   handleTypeChange = (event, index, typeValue) => this.setState({typeValue});
   handleComplexityChange = (event, index, complexityValue) => this.setState({complexityValue});
@@ -105,11 +112,14 @@ constructor(props){
       else if(this.state.typeValue === 2){
         this.setState({mcq: false});
         this.setState({tf: true});
-      }}
+      }
+
+      }
       closeLayout(){
         this.setState({mcq: false});
         this.setState({tf: false});
       }
+
 
 
 }
