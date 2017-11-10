@@ -26,7 +26,7 @@ export default class QuestionLayout extends React.Component {
                   domain: '',
                   complexity: '',
                   type: '',
-                  topic: 'CCCC',
+                  topic: '',
                   question: '',
                   answer: '',
                   optionA: '',
@@ -64,6 +64,7 @@ export default class QuestionLayout extends React.Component {
             <RaisedButton label="preview" secondary={true} style={style} onClick={this.openPreview}/>
             <RaisedButton label="save" primary={true} style={style} onClick = 'https:/172.23.238.133:3000' />
             <PreviewTrueFalse open = {this.state.preview} setDefault = {this.closePreview} question = {this.state.question} />
+            
         </Drawer>
       </div>
     );
