@@ -3,10 +3,9 @@ import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import RaisedButton from 'material-ui/RaisedButton';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import {Card, CardText} from 'material-ui/Card';
   const styles = {
     block: {
-
       maxWidth: 250,
     },
     radioButton: {
@@ -38,7 +37,7 @@ class PreviewTrueFalse extends React.Component{
           />
     <Card initiallyExpanded="true">
         <h3 style = {styles.questionStyle}> {this.state.question} </h3>
-        <RadioButtonGroup name="Choices" defaultSelected="none">
+        <RadioButtonGroup name="Choices" defaultSelected="yes">
         <RadioButton
           value="light"
           label="True"

@@ -1,11 +1,11 @@
 import React from 'react';
 import Drawer from 'material-ui/Drawer';
-import axios from 'axios';
 import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import McqQuestion from './McqQuestion';
 import TFQuestion from './TFQuestion';
 import PreviewTrueFalse from './PreviewTrueFalse';
+import PreviewMcq from './PreviewMcq';
 const style = {
   margin: 12,
 };
@@ -53,8 +53,12 @@ export default class QuestionLayout extends React.Component {
                         optionC = {this.getOptionC} optionD = {this.getOptionD}
           />
             <RaisedButton label="cancel" default={true} style={style} onClick = {this.props.setDefault }/>
-            <RaisedButton label="preview" secondary={true} style={style} />
+            <RaisedButton label="preview" secondary={true} style={style} onClick={this.openPreview}/>
             <RaisedButton label="save" primary={true} style={style} />
+            <PreviewMcq open = {this.state.preview} setDefault = {this.closePreview} question = {this.state.question}
+                        optionA = {this.state.optionA} optionB = {this.state.optionB}
+                        optionC = {this.state.optionC} optionD = {this.state.optionD}
+            />
 
         </Drawer>
         <Drawer width={1439} openSecondary={true} open={this.state.tf} >
@@ -62,9 +66,9 @@ export default class QuestionLayout extends React.Component {
           < TFQuestion onSubmit = {this.getQuestion} getAnswer = {this.getAnswer}/>
             <RaisedButton label="cancel" default={true} style={style} onClick = {this.props.setDefault }/>
             <RaisedButton label="preview" secondary={true} style={style} onClick={this.openPreview}/>
-            <RaisedButton label="save" primary={true} style={style} onClick = 'https:/172.23.238.133:3000' />
+            <RaisedButton label="save" primary={true} style={style} onSubmit = {this.save} />
             <PreviewTrueFalse open = {this.state.preview} setDefault = {this.closePreview} question = {this.state.question} />
-            
+
         </Drawer>
       </div>
     );
@@ -130,12 +134,6 @@ export default class QuestionLayout extends React.Component {
     this.setState({answer: value});
   }
   save(){
-    let type = this.state.typeValue;
-    let level =  this.state.levelValue;
-    let domain = this.state.DomainValue;
-    let complexity = this.state.complexityValue;
-    let topic = this.state.topicValue;
-    let question = this.state.question;
-    let answer = this.state.answer;
+    console.log("clicked save");
   }
 }
