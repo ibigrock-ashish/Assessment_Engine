@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import MCQTemplate from './MCQTemplate/MCQTemplate';
 import NavPanel from './NavPanel/NavPanel';
 import SubmitPanel from './SubmitPanel/SubmitPanel';
+import Paper from 'material-ui/Paper';
 
 const divStyle={
 	height:'340px',
 	width:'900px',
-	border:'2px solid black',
+	border:'2px solid',
 	margin:'auto',
-	marginTop:'50px'
+	marginTop:'50px',
+
 }
 class ExamRenderer extends Component{
 	constructor(props){
@@ -28,16 +30,21 @@ class ExamRenderer extends Component{
 	render(){
 		const {qNumber} = this.state;
 		return(
+			
 			<div>
-				<div style={divStyle}>
+				<Paper style={divStyle} zDepth={1}>
+				<div>
 					<h3>{qNumber}</h3>
 					<MCQTemplate />
 				</div>
+				</Paper>
+				
 				<div>
 					<NavPanel 
 						questionCount='10'
 						questionClick={this.onClickNav.bind(this)} />
 				</div>
+				
 			</div>
 
 		);

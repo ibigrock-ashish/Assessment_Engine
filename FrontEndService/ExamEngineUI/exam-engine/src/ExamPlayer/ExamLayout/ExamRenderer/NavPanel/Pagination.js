@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Paper from 'material-ui/Paper';
 class Pagination extends Component{
 
 		
@@ -30,7 +30,7 @@ class Pagination extends Component{
               key={QuestionNumber}
               id={QuestionNumber}
               onClick={this.handleClick}
-              style={{ListStyleType:'none', display:'inline-block',width:'20px',textAlign:'center', padding:'5px', backgroundColor:'#00cc66',color:'white', border:'2px solid white', borderRadius:'50px' }}
+              style={{ListStyleType:'none', display:'inline-block',width:'20px',textAlign:'center', padding:'5px', backgroundColor:'#00bcd4',color:'white', border:'2px solid #00bcd4', borderRadius:'50px', boxShadow:'0px 0px 3px #888888', margin:'2px' }}
             >
               {QuestionNumber}
             </li>

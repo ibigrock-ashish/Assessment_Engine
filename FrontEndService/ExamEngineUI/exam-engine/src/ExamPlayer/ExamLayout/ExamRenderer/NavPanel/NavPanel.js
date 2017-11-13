@@ -54,7 +54,7 @@ class NavPanel extends Component{
 				label="Mark" primary={true} />
 			</div>
 			<div style={{marginTop:'5px'}}>
-				<RaisedButton label="Submit" primary={true} />
+				<RaisedButton label="Submit" fullWidth={true} backgroundColor="#ff0000" labelColor="white" />
 			</div>
 		</div>
 
