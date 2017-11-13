@@ -6,18 +6,18 @@ class Pagination extends Component{
 	constructor(props){
 		super(props);
 		this.state ={
-			currentQuestionNumer:1,
+			//currentQuestionNumber:1,
 			QuestionCount:this.props.questionCount,
 		}
 		this.handleClick=this.handleClick.bind(this);
 	}
 
 	handleClick(event){
-		this.setState({
-			currentQuestionNumer : Number(event.target.id)
-		});
+		// this.setState({
+		// 	currentQuestionNumber : Number(event.target.id)
+		// });
+		this.props.onPagerClick(Number(event.target.id));
 	}
-
 
  render(){
  	const {QuestionCount, currentQuestionNumer} = this.state;

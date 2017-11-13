@@ -19,6 +19,11 @@ class ExamRenderer extends Component{
 
 	}
 
+	onClickNav(NewQues){
+		this.setState({
+			qNumber:NewQues
+		})
+	}
 	
 	render(){
 		const {qNumber} = this.state;
@@ -29,7 +34,9 @@ class ExamRenderer extends Component{
 					<MCQTemplate />
 				</div>
 				<div>
-					<NavPanel questionCount='10' />
+					<NavPanel 
+						questionCount='10'
+						questionClick={this.onClickNav.bind(this)} />
 				</div>
 			</div>
 
