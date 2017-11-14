@@ -24,7 +24,8 @@ class ExamRenderer extends Component{
 		  this.disconnect=this.disconnect.bind(this)   
 		this.state={
 			num:0,
-			qNumber:1
+			qNumber:1,
+			qData:[]
 		};
 
 	}
@@ -51,6 +52,9 @@ class ExamRenderer extends Component{
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/question', function (greeting) {
           console.log(JSON.parse(greeting.body).question);
+          that.setState({
+          	qData : greeting.body
+          });
           //console.log(greeting);
             //that.setvalue(greeting);
                         });
@@ -64,14 +68,14 @@ disconnect() {
     console.log("Disconnected");
 } 
 	render(){
-		const {qNumber} = this.state;
+		const {qNumber, qData} = this.state;
 		return(
 			
 			<div>
 				<Paper style={divStyle} zDepth={1}>
 				<div>
 					<h3>{qNumber}</h3>
-					<MCQTemplate />
+					<MCQTemplate questionData={this.state.qData} />
 				</div>
 				</Paper>
 				
