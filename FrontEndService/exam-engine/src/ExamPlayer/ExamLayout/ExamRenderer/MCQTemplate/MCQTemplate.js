@@ -6,7 +6,7 @@ class MCQTemplate extends Component{
 	render(){
 		return(
 			<div>
-			<Template1 />
+			
 			</div>
 			);
 	}

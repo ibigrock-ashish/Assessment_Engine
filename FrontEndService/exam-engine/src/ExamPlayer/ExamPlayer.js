@@ -3,7 +3,6 @@ import ExamTimer from './ExamTimer/ExamTimer';
 import ExamLayout from './ExamLayout/ExamLayout';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
-import SubmitPanel from './SubmitPanel/SubmitPanel';
 
 class ExamPlayer extends Component{
 
@@ -14,8 +13,7 @@ class ExamPlayer extends Component{
 				<AppBar title="ExamEngine UI" />
 				<ExamTimer />
 				<ExamLayout />
-				<SubmitPanel />
-				</div>
+			</div>
 			</MuiThemeProvider>
 		);
 	}
