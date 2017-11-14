@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import MCQTemplate from './MCQTemplate/MCQTemplate';
 import NavPanel from './NavPanel/NavPanel';
 import SubmitPanel from './SubmitPanel/SubmitPanel';
-import QuestionCrumps from './QuestionCrumps/QuestionCrumps';
 
 const divStyle={
 	height:'340px',
@@ -12,23 +11,25 @@ const divStyle={
 	marginTop:'50px'
 }
 class ExamRenderer extends Component{
+	constructor(props){
+		super(props);
+		this.state={
+			qNumber:1
+		};
 
+	}
+
+	
 	render(){
+		const {qNumber} = this.state;
 		return(
 			<div>
 				<div style={divStyle}>
+					<h3>{qNumber}</h3>
 					<MCQTemplate />
 				</div>
-				<div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', marginLeft:'50px', marginRight:'50px', marginTop:'10px'}}>
-					<QuestionCrumps />
-					<div style={{display:'flex', flexDirection:'column', alignItems:'flex-end'}}>
-						<div>
-							<NavPanel />
-						</div>
-						<div style={{marginTop:'5px'}}>
-							<SubmitPanel />
-						</div>
-					</div>
+				<div>
+					<NavPanel questionCount='10' />
 				</div>
 			</div>
 
