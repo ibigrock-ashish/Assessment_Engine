@@ -6,6 +6,7 @@ import McqQuestion from './McqQuestion';
 import TFQuestion from './TFQuestion';
 import PreviewTrueFalse from './PreviewTrueFalse';
 import PreviewMcq from './PreviewMcq';
+import axios from 'axios';
 const style = {
   margin: 12,
 };
@@ -66,14 +67,12 @@ export default class QuestionLayout extends React.Component {
           < TFQuestion onSubmit = {this.getQuestion} getAnswer = {this.getAnswer}/>
             <RaisedButton label="cancel" default={true} style={style} onClick = {this.props.setDefault }/>
             <RaisedButton label="preview" secondary={true} style={style} onClick={this.openPreview}/>
-            <RaisedButton label="save" primary={true} style={style} onSubmit = {this.save} />
+            <RaisedButton label="save" primary={true} style={style} onClick = {this.save} />
             <PreviewTrueFalse open = {this.state.preview} setDefault = {this.closePreview} question = {this.state.question} />
-
         </Drawer>
       </div>
     );
   }
-
   //Props received from the child components
   componentWillReceiveProps(newProps){
     this.setState({mcq: newProps.openMcq});
@@ -134,6 +133,25 @@ export default class QuestionLayout extends React.Component {
     this.setState({answer: value});
   }
   save(){
+    axios.post('/user', {
+      domain: this.state.domain,
+      complexity: this.state.complexity,
+      type: this.state.type,
+      topic: this.state.topic,
+      question: this.state.question,
+      answer: this.state.answer,
+      optionA: this.state.optionA,
+      optionB: this.state.optionB,
+      optionC: this.state.optionC,
+      optionD: this.state.optionD
+
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
     console.log("clicked save");
   }
 }
