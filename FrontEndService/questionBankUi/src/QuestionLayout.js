@@ -37,12 +37,12 @@ export default class QuestionLayout extends React.Component {
     this.openPreview = this.openPreview.bind(this);
     this.closePreview =  this.closePreview.bind(this);
     this.getQuestion = this.getQuestion.bind(this);
-    this.getAnswer = this.getAnswer.bind(this);
-    this.save = this.save.bind(this);
     this.getOptionA = this.getOptionA.bind(this);
     this.getOptionB = this.getOptionB.bind(this);
     this.getOptionC = this.getOptionC.bind(this);
     this.getOptionD = this.getOptionD.bind(this);
+    this.getAnswer = this.getAnswer.bind(this);
+    this.save = this.save.bind(this);
   }
   render() {
     return (
@@ -55,7 +55,7 @@ export default class QuestionLayout extends React.Component {
           />
             <RaisedButton label="cancel" default={true} style={style} onClick = {this.props.setDefault }/>
             <RaisedButton label="preview" secondary={true} style={style} onClick={this.openPreview}/>
-            <RaisedButton label="save" primary={true} style={style} />
+            <RaisedButton label="save" primary={true} style={style} onClick = {this.save} />
             <PreviewMcq open = {this.state.preview} setDefault = {this.closePreview} question = {this.state.question}
                         optionA = {this.state.optionA} optionB = {this.state.optionB}
                         optionC = {this.state.optionC} optionD = {this.state.optionD}
@@ -133,7 +133,9 @@ export default class QuestionLayout extends React.Component {
     this.setState({answer: value});
   }
   save(){
-    axios.post('/user', {
+    axios.post('/saved', data,{
+      header:{},
+      body:{
       domain: this.state.domain,
       complexity: this.state.complexity,
       type: this.state.type,
@@ -144,6 +146,7 @@ export default class QuestionLayout extends React.Component {
       optionB: this.state.optionB,
       optionC: this.state.optionC,
       optionD: this.state.optionD
+    }
 
   })
   .then(function (response) {
@@ -152,6 +155,5 @@ export default class QuestionLayout extends React.Component {
   .catch(function (error) {
     console.log(error);
   });
-    console.log("clicked save");
   }
 }
