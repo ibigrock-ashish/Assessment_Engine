@@ -6,7 +6,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import QuestionProperties from './QuestionProperties';
 import QuestionLayout from './QuestionLayout';
-
+import {HashRouter, Route,Link} from 'react-router-dom'
 class Index extends React.Component{
   render(){
     return(
@@ -17,5 +17,11 @@ class Index extends React.Component{
   }
 }
 ReactDom.render(
-<Index />,document.getElementById('root'));
+  <HashRouter>
+    <div>
+    <Route path="/" component= {Index} />
+      <Route path = "/questionDetails" component={QuestionLayout} />
+    </div>
+    </HashRouter>
+,document.getElementById('root'));
 registerServiceWorker();

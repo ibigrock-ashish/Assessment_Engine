@@ -9,7 +9,6 @@ export default class Main extends React.Component{
 		super(props);
 		this.state={resdata:[]};
 		this.search=this.search.bind(this);
-
 	}
 	render(){
 		return(

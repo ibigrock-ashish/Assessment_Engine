@@ -6,7 +6,7 @@ import MenuItem from 'material-ui/MenuItem';
 import QuestionLayout from './QuestionLayout';
 import {Card, CardHeader} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
-
+import {Link} from 'react-router';
 const styles = {
   customWidth:{
     width: 150
@@ -110,7 +110,7 @@ constructor(props){
         </DropDownMenu>
         </li>
         <li style= {styles.ul}>
-        <DropDownMenu value={this.state.markValue} onChange={this.handleLevelChange}  style={styles.customWidth}>
+        <DropDownMenu value={this.state.markValue} onChange={this.handleMarkChange}  style={styles.customWidth}>
           <MenuItem value={1} primaryText="1 mark" />
           <MenuItem value={2} primaryText="2 marks" />
           <MenuItem value={3} primaryText="3 marks" />
@@ -137,7 +137,7 @@ constructor(props){
                             type = {this.state.typeValue} level = {this.state.levelValue}
                             domain = {this.state.domainValue} complexity = {this.state.complexityValue}
                             topic = {this.state.topicValue}
-                            setDefault = {this.closeLayout}
+                            setDefault = {this.closeLayout} marks = {this.state.markValue}
           />
         </div>
       </Card>
@@ -149,6 +149,7 @@ constructor(props){
   handleTypeChange = (event, index, typeValue) => this.setState({typeValue});
   handleComplexityChange = (event, index, complexityValue) => this.setState({complexityValue});
   handleLevelChange = (event, index, levelValue) => this.setState({levelValue});
+  handleMarkChange = (event, index, markValue) => this.setState({markValue});
 
     openLayout(){
       if(this.state.typeValue === 1){

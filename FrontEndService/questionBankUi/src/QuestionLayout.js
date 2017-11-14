@@ -6,6 +6,8 @@ import McqQuestion from './McqQuestion';
 import TFQuestion from './TFQuestion';
 import PreviewTrueFalse from './PreviewTrueFalse';
 import PreviewMcq from './PreviewMcq';
+import {Link} from 'react-router';
+import request from 'superagent';
 import axios from 'axios';
 const style = {
   margin: 12,
@@ -33,7 +35,8 @@ export default class QuestionLayout extends React.Component {
                   optionA: '',
                   optionB: '',
                   optionC: '',
-                  optionD: ''}
+                  optionD: '',
+                  marks: ''}
     this.openPreview = this.openPreview.bind(this);
     this.closePreview =  this.closePreview.bind(this);
     this.getQuestion = this.getQuestion.bind(this);
@@ -82,6 +85,7 @@ export default class QuestionLayout extends React.Component {
     this.setState({domainValue: newProps.domain});
     this.setState({complexityValue: newProps.complexity});
     this.setState({topicValue: newProps.topic});
+    this.setState({marks: newProps.marks});
 
     if(this.state.domainValue === 1){
       this.setState({domain: "java"});
@@ -132,28 +136,66 @@ export default class QuestionLayout extends React.Component {
   getAnswer(value){
     this.setState({answer: value});
   }
-  save(){
-    axios.post('/saved', data,{
-      header:{},
-      body:{
-      domain: this.state.domain,
-      complexity: this.state.complexity,
-      type: this.state.type,
-      topic: this.state.topic,
-      question: this.state.question,
-      answer: this.state.answer,
-      optionA: this.state.optionA,
-      optionB: this.state.optionB,
-      optionC: this.state.optionC,
-      optionD: this.state.optionD
-    }
+  save(e){
+    e.preventDefault();
+    // domain = this.state.domain;
+    //  complexity: this.state.complexity;
+    //  type: this.state.type;
+    //  topic: this.state.topic;
+    //  question: this.state.question;
+    //  answer: this.state.answer;
+    // optionA: this.state.optionA,
+    // optionB: this.state.optionB,
+    // optionC: this.state.optionC,
+     // optionD: this.state.optionD;
+    const questionDetails= {
 
+    "subjectLists":[
+        {"subject":this.state.domain,
+        "topicList":[
+            {
+            "topic":this.state.topic,
+            "levelList":[
+                {
+                    "level":this.state.levelValue,
+                    "complexityList":[
+                        {
+                            "complexity":this.state.complexityValue,
+                            "questionTypeList":[
+                                {
+                                    "questionType":this.state.type,
+                                    "questionList":[
+                                        {
+                                            "id":"8",
+                                            "question":this.state.question,
+                                            "options":[{"a":this.state.optionA,"b":this.state.optionB,"c":this.state.optionC,"d":this.state.optionD}],
+                                            "correctAnswer":this.state.answer,
+                                            "marksAlloted":this.state.marks
+                                        }]
+                                }]
+                        }
+                        ]
+                }]
+            }]
+
+       }
+    ]
+}
+  request
+  .post('http://172.23.238.205:8081/questions')
+  .set('content-type', 'application/json')
+  .send(questionDetails)
+  .end((res,err) =>{
+    if(res){
+      console.log("res -" ,res.body);
+    }
+    else{
+      console.log("error -> ", err);
+    }
   })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
   }
+
+
+
+
 }
