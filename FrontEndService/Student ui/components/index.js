@@ -6,6 +6,7 @@ import Favourites from './container/Favourites';
 import Nav from './container/Nav';
 import ComponentNotFound from './container/ComponentNotFound';
 import Register from './container/Register';
+import Login from './container/Login';
 import {browserHistory, Route, Router, IndexRoute}  from 'react-router';
 
 
@@ -29,6 +30,7 @@ ReactDom.render(
                 <IndexRoute component={Main} />
                 <Route path="/favourites" component={Favourites}/>
 								<Route path="/register" component={Register}/>
+								<Route path="/login" component={Login}/>
                 <Route path='*' component={ComponentNotFound} />
                 </Route>
 				</Router> , document.getElementById('root')

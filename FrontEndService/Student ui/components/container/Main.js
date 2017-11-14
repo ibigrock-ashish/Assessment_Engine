@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import Login from './Login';
 import Register from './Register';
+import StudentHome from './StudentHome';
 
 export default class Main extends React.Component{
 	constructor(props){

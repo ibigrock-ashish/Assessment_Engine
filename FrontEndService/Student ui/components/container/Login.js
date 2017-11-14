@@ -13,11 +13,10 @@ constructor(props){
 render() {
     return (
 
-          <div>
+          <div style={style}>
            <TextField
              hintText="Enter your Username"
              floatingLabelText="Username"
-             style={style}
              onChange = {(event,newValue) => this.setState({username:newValue})}
              />
            <br/>
@@ -25,15 +24,15 @@ render() {
                type="password"
                hintText="Enter your Password"
                floatingLabelText="Password"
-              style={style}
                onChange = {(event,newValue) => this.setState({password:newValue})}
                />
              <br/>
-             <RaisedButton label="Login" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+             <br/>
+             <RaisedButton label="Login" primary={true} onClick={(event) => this.handleClick(event)}/>
              <br/>
 
              <br/>
-             <RaisedButton label="Register" primary={true} style={style} onClick={(event) => this.handleClick(event)} containerElement={<Link to="/register"/>}/>
+             <h4>Notyet Registered, Register <Link to="/register">Here</Link></h4>
             </div>
 
     );
