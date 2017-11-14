@@ -33,28 +33,26 @@ class NavPanel extends Component{
 
 	render(){
 		return(
-		<div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', marginRight:'50px', marginLeft:'50px', alignItems:'center'}}>
+		<div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', marginRight:'', marginLeft:'', alignItems:'center'}}>
 		
 
 		<Pagination 
 			questionCount={this.props.questionCount}
 			onPagerClick={this.getQfromPager.bind(this)}  
-			style={{display:'flex', marginTop:''}} />
+			style={{display:'flex'}} />
 		
 
-		<div style={{display:'flex', flexDirection:'column', alignItems:'flex-end'}}>
-			<div style={{marginTop:'10px'}}>
+		<div style={{display:'flex', flexDirection:'column', alignItems:'flex-end', width:'500px', marginRight:'50px'}}>
+			<div style={{marginTop:'5px', width:''}}>
 				<RaisedButton onClick={this.onNavPrevClick}
 				label="< Previous" primary={true} style={{marginRight:'5px'}}/>
 				
 				<RaisedButton onClick={this.onNavNextClick}
-				label="Next >" primary={true} style={{marginRight:'15px'}} />
-				
-				<RaisedButton 
-				label="Mark" primary={true} />
+				label="Next >" primary={true} />
+
 			</div>
 			<div style={{marginTop:'5px'}}>
-				<RaisedButton label="Submit" fullWidth={true} backgroundColor="#ff0000" labelColor="white" />
+				<RaisedButton label="Submit" backgroundColor="#ff0000" labelColor="white" />
 			</div>
 		</div>
 

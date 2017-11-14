@@ -41,7 +41,7 @@ class ExamRenderer extends Component{
 				
 				<div>
 					<NavPanel 
-						questionCount='10'
+						questionCount='30'
 						questionClick={this.onClickNav.bind(this)} />
 				</div>
 				
