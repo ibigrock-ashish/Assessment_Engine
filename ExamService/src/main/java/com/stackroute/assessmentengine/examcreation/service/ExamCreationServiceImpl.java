@@ -4,51 +4,72 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-import com.stackroute.assessmentengine.examcreation.controller.KafkaController;
-import com.stackroute.assessmentengine.examcreation.domian.Exam;
-
+import com.stackroute.assessmentengine.examcreation.domian.Ex;
+import com.stackroute.assessmentengine.examcreation.domian.QuestionPaper;
+import com.stackroute.assessmentengine.examcreation.repository.ExRepo;
 import com.stackroute.assessmentengine.examcreation.repository.ExamCreationRepository;
-@Component
-@Document(collection="examcreationdb")
+
+//import com.stackroute.assessmentengine.examcreation.controller.KafkaController;
+
+
+@Service
 public class ExamCreationServiceImpl implements ExamCreationService{
 
 	
 	@Autowired
-	private ExamCreationRepository examCreationRepository;
-	private Exam exam;
+	ExamCreationRepository examCreationRepository;
+	@Autowired
+	ExRepo exRepo;
 	
-	
-	
-//	@Override
-//	public String create(Exam exam) {
-//		
-//		examCreationRepository.save(exam);
-//		return "successfully saved data...!";
-//	}
-//	
 	@Override
-	public Exam findCustomBySubject(String subject) {
+	public String createQuestionPaper(QuestionPaper questionPaper) {
 		
-		return examCreationRepository.findCustomBySubject(subject);
+		
+		examCreationRepository.save(questionPaper);
+		
+		return "Data Saved Successfully...!";
 	}
 
 	@Override
-	public List<Exam> getAll() {
+	public List<QuestionPaper> getAll() {
 		
 		return examCreationRepository.findAll();
 	}
 
+	@Override
+	public String exSave(Ex ex) {
+		
+		exRepo.save(ex);
+		return "Data saved ";
+	}
+
+//	
+//	@Autowired
+//	private ExamCreationRepository examCreationRepository;
+//	private Exam exam;
+//	
+//
+//	
+//
+//
+//
 //	@Override
-//	public List<ExamQuestions> getQuestions(ExamQuestions examQuestions) {
+//	public List<QuestionBank> getQuestions(QuestionBank examQuestions) {
 //		
-//		return examCreationRepository.save(examQuestions);
-//	}
+//		return (List<QuestionBank>) examCreationRepository.save(examQuestions);
+//		
+//	
+//	
+
+
+	}
 
 	
 	
 
-}
+
 
 
 

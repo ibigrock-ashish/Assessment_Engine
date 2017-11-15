@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.stackroute.assessmentengine.examcreation.domian.Exam;
 import com.stackroute.assessmentengine.examcreation.fienclient.FeignClientService;
-import com.stackroute.assessmentengine.examcreation.qbdomain.QuestionBank;
+
 
 
 @RestController
@@ -22,13 +21,13 @@ public class FeignExamController {
 	
 	@Autowired
 	FeignClientService feignClientService;
-
-	@RequestMapping(method=RequestMethod.GET,value="/specquestions/{subject}/{topic}/{level}/{complexity}/{questionType}")
-    public ResponseEntity<List<QuestionBank>> getSpecificQuestions(@PathVariable String subject,@PathVariable String topic,@PathVariable String level,@PathVariable String complexity,@PathVariable String questionType)
-	{
-        List<QuestionBank> questionBankList=feignClientService.findRequired(subject,topic,level,complexity,questionType); 
-        return new ResponseEntity<List<QuestionBank>>(questionBankList, HttpStatus.OK);
-        
-    }
+//
+//	@RequestMapping(method=RequestMethod.GET,value="/specquestions/{subject}/{topic}/{level}/{complexity}/{questionType}")
+//    public ResponseEntity<List<QuestionBank>> getSpecificQuestions(@PathVariable String subject,@PathVariable String topic,@PathVariable String level,@PathVariable String complexity,@PathVariable String questionType)
+//	{
+//        List<QuestionBank> questionBankList=feignClientService.findRequired(subject,topic,level,complexity,questionType); 
+//        return new ResponseEntity<List<QuestionBank>>(questionBankList, HttpStatus.OK);
+//        
+//    }
 
 }
