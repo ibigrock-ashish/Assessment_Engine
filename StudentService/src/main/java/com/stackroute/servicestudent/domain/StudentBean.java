@@ -1,32 +1,25 @@
 package com.stackroute.servicestudent.domain;
 
-import org.springframework.data.annotation.Id;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="StudentData")
 public class StudentBean {
-	@Id
-	private String id;
-	private String StudentName;
-	private int age;
+	
+	private String studentName;
 	private String emailId;
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+	private String contactNumber;
+	private String skillSet;
+	private String address;
+	private String password;
+	private String confirmPassword;
+	
+	
 	public String getStudentName() {
-		return StudentName;
+		return studentName;
 	}
 	public void setStudentName(String studentName) {
-		StudentName = studentName;
-	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
+		this.studentName = studentName;
 	}
 	public String getEmailId() {
 		return emailId;
@@ -34,20 +27,56 @@ public class StudentBean {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
-	public StudentBean(String id, String studentName, int age, String emailId) {
+	public String getContactNumber() {
+		return contactNumber;
+	}
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+	public String getSkillSet() {
+		return skillSet;
+	}
+	public void setSkillSet(String skillSet) {
+		this.skillSet = skillSet;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+	public StudentBean(String studentName, String emailId, String contactNumber, String skillSet,
+			String address, String password, String confirmPassword) {
 		super();
-		this.id = id;
-		StudentName = studentName;
-		this.age = age;
+		
+		this.studentName = studentName;
 		this.emailId = emailId;
+		this.contactNumber = contactNumber;
+		this.skillSet = skillSet;
+		this.address = address;
+		this.password = password;
+		this.confirmPassword = confirmPassword;
 	}
 	public StudentBean() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-	
+
+
+	   
 
 
 	

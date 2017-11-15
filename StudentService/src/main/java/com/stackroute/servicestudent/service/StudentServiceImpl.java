@@ -30,16 +30,11 @@ public class StudentServiceImpl implements StudentService{
 	@Override
 	public StudentBean addUser(StudentBean userBean) throws UserAlreadyExistException{
 		
-		if(studentRepository.findOne(userBean.getId())!=null)
-		{
-			throw new UserAlreadyExistException("User already exists");
-			
-		}else {
-			
+	
 			return studentRepository.save(userBean);
 		}	
 		
-	}
+	
 
 	@Override
 	public StudentBean updateUser(StudentBean userBean) {

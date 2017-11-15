@@ -3,7 +3,9 @@ package com.stackroute.servicestudent.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,10 +16,12 @@ import com.stackroute.servicestudent.domain.StudentBean;
 import com.stackroute.servicestudent.exception.UserAlreadyExistException;
 import com.stackroute.servicestudent.service.StudentService;
 
+
 @RestController
 @RequestMapping("/students")
 
 public class StudentController {
+	
 	@Autowired
 	private StudentService studentService;
 	
@@ -37,7 +41,7 @@ public class StudentController {
 		// ResponseEntity returns message along with HTTP Status.
 		
 	}
-	
+	@CrossOrigin("*")
 	@RequestMapping(method=RequestMethod.POST)
 	// This Annotation takes care to map specific response to a method with fixed value attribute
 	public ResponseEntity<String> addUser(@RequestBody StudentBean userBean) throws UserAlreadyExistException{

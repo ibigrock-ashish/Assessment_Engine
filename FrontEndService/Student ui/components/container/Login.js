@@ -28,7 +28,7 @@ render() {
                />
              <br/>
              <br/>
-             <RaisedButton label="Login" primary={true} onClick={(event) => this.handleClick(event)}/>
+             <RaisedButton label="Login" primary={true} containerElement={<Link to="/loginMain"/>}/>
              <br/>
 
              <br/>

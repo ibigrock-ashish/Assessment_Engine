@@ -4,16 +4,18 @@ import Login from './Login';
 import Register from './Register';
 import StudentHome from './StudentHome';
 
+
 export default class Main extends React.Component{
 	constructor(props){
 		super(props);
-		this.state={resdata:[]};
-		this.search=this.search.bind(this);
+	
+
 	}
 	render(){
 		return(
 			<div>
 			<Login />
+
 			</div>
 
 			);
