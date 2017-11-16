@@ -14,23 +14,15 @@ class Counter extends Component {
     var x = this;
     var { hh, mm, ss } = this.state;
                   setTimeout(function() {
-                    if (ss > 0 && ss < 60 ) {
-                      x.setState({ ss: ss - 1 });
+                    if(mm == 0 && ss ==0){
+                      x.setState({hh: hh -1, mm: 59, ss: 59});
                     }else{
-                      if(mm > 0 && mm < 60 ){
-                        x.setState({mm:mm-1});
-                        x.setState({ss: 59});
-                      }else{
-                        if(hh >= 0 && hh < 60 ){
-                          x.setState({ss:59});
-                          x.setState({mm:59});
-                          x.setState({hh:hh-1});
-                          
-                        }else{
-                          
-                        }
-                      }
+                    if(ss == 0 ){
+                      x.setState({mm: mm -1, ss: 59});
+                    }else{
+                      x.setState({ss:ss-1});
                     }
+                  }
                   }, 1000);
     return <div><h4>Time Remainning: {hh}:{mm}:{ss}</h4></div>;
   }
