@@ -29,9 +29,10 @@ ReactDom.render(
 				<Route path="/" component={Index} >
                 <IndexRoute component={Main} />
 								<Route path="/register" component={Register}/>
+								<Route path="/error" component={ComponentNotFound}/>
 								<Route path="/login" component={Login}/>
 								<Route path="/loginMain" component={StudentHome}/>
-                <Route path='*' component={ComponentNotFound} />
+                //<Route path='*' component={ComponentNotFound} />
         </Route>
 				</Router> , document.getElementById('root')
 );
