@@ -16,7 +16,7 @@ class Pagination extends Component{
 	}
 
  render(){
- 	const {QuestionCount, currentQuestionNumer} = this.state;
+ 	const {QuestionCount} = this.state;
  	const QuestionNumbers=[];
  	for(var i=1; i<= QuestionCount; i++){QuestionNumbers.push(i);}
 

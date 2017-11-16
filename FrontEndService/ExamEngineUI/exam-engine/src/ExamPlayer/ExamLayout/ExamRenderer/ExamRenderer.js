@@ -23,6 +23,7 @@ class ExamRenderer extends Component{
 		 this.sendQuestion=this.sendQuestion.bind(this)
 		  this.disconnect=this.disconnect.bind(this)   
 		this.state={
+			userId:'user2',
 			num:0,
 			qNumber:1,
 			qData:null
@@ -46,14 +47,14 @@ class ExamRenderer extends Component{
 	
 	sendQuestion() {
 		var t = this;
-    stompClient.send("/app/questions", {}, JSON.stringify({'userid':'user1','question': 'Question1','selectedAnswer':'Question1Answer', 'nextQuestion':t.state.qNumber}));
+    stompClient.send("/app/questions/"+t.state.userId, {}, JSON.stringify({'userid':'user2','question': 'Question1','selectedAnswer':'Question1Answer', 'nextQuestion':t.state.qNumber}));
 }
 	connect() {
     var that=this;
     socket = new SockJS("http://172.23.238.225:8081/engine");
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
-        stompClient.subscribe('/topic/question', function (greeting) {
+        stompClient.subscribe('/topic/question/'+that.state.userId, function (greeting) {
           console.log(JSON.parse(greeting.body).question);
           that.setState({
           	qData: greeting.body
