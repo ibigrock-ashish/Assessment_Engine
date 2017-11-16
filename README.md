@@ -64,6 +64,7 @@ The product is an Assessment Engine that can be used to create question bank, ro
 8.	Redis Cache
 9.	Eureka
 10.	Zuul
+11. MongoDB
 
 
 # Challenges To Address:-
