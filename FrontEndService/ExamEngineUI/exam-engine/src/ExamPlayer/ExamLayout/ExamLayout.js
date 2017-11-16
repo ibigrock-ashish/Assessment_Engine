@@ -10,11 +10,13 @@ const divStyle={
 }
 
 class ExamLayout extends Component{
-
+	constructor(props){
+		super(props);
+	}
 	render(){
 		return(
 			<Paper style={divStyle} zDepth={3}>
-			<ExamRenderer />
+			<ExamRenderer msg={this.props.msg} />
 			</Paper>
 	);
 	}
