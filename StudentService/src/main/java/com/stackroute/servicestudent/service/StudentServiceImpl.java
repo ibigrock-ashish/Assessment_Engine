@@ -40,10 +40,8 @@ public class StudentServiceImpl implements StudentService{
 	public StudentBean addUser(StudentBean userBean) throws UserAlreadyExistException{
 
 
-			return studentRepository.save(userBean);
-		}
-
-
+		return studentRepository.save(userBean);
+	}
 
 	@Override
 	public StudentBean updateUser(StudentBean userBean) {
@@ -62,14 +60,11 @@ public class StudentServiceImpl implements StudentService{
 
 		Query query11 = new Query();
 		query11.addCriteria(Criteria.where("emailId").in(emailId)
-				.andOperator(Criteria.where("password").in(password)));
+		.andOperator(Criteria.where("password").in(password)));
 
 		List<StudentBean> userTest11 = mongoOperation.find(query11, StudentBean.class);
-		//System.out.println("query11 - " + query11.toString());
 		for (StudentBean syudentlogin : userTest11) {
-			//System.out.println("userTest11 - " + questionBank);
 		}
-		//System.out.println(userTest11.toString());
 		return userTest11.toString();
 	}
 }
