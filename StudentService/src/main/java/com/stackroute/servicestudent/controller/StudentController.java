@@ -73,4 +73,18 @@ public class StudentController {
 		 return ResponseEntity.ok("User Deleted successfully");
 		// ResponseEntity returns message along with HTTP Status.
 	}
+	
+	@RequestMapping(method=RequestMethod.GET,value="/studentlogin/{emailId}/{password}")
+	public String getLoginDetails(@PathVariable String emailId,@PathVariable String password) {
+		
+		try {
+			if(!(studentService.getLoginDetails(emailId,password)).equals("[]")){
+				return "Login Successfull";
+			}else {
+				return "Login Failed";
+			}
+		}catch(Exception e) {
+			return "Login Failed";
+		}	
+	}
 }

@@ -12,4 +12,5 @@ public interface StudentService {
 	public StudentBean addUser(StudentBean userBean) throws UserAlreadyExistException;
 	public StudentBean updateUser(StudentBean userBean);
 	public String deleteUser(String id);
+	public String getLoginDetails(String emailId,String password);
 }
